@@ -141,3 +141,29 @@ CREATE TABLE internships (
     FOREIGN KEY (student_id) REFERENCES student(student_id),
     FOREIGN KEY (company_id) REFERENCES companies(company_id)
 );
+
+CREATE TABLE mplads_projects (
+    mplads_project_id SERIAL PRIMARY KEY,
+    project_name VARCHAR(200) NOT NULL,
+    description TEXT,
+
+    state VARCHAR(100),
+    district VARCHAR(100),
+    location VARCHAR(200),
+
+    sanctioned_amount NUMERIC(15,2),
+    expenditure NUMERIC(15,2),
+
+    progress NUMERIC(5,2),
+    project_status VARCHAR(50),
+
+    start_date DATE,
+    expected_completion_date DATE,
+    actual_completion_date DATE,
+
+    delay_days INT DEFAULT 0,
+
+    risk_score NUMERIC(5,2),
+    anomaly_flag BOOLEAN DEFAULT FALSE,
+    anomaly_reason TEXT
+);
